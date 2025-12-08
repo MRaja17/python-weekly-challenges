@@ -14,7 +14,29 @@ In simple words, NoSQL gives more flexibility and speed for handling big and cha
 
 
 ## Easy 2  
-Solve a toy example applying NoSQL Basics.
+Let's take a simple toy example using a NoSQL document-based database like MongoDB.
+
+### Example Scenario
+We want to store information about a user.  
+In SQL, we would need a fixed table with specific columns.  
+In NoSQL (MongoDB), we can store the user as a flexible JSON-like document.
+
+### NoSQL Document Example
+{
+  "name": "Meghana",
+  "age": 25,
+  "skills": ["Python", "SQL", "NoSQL"],
+  "is_student": false
+}
+
+### Why this is NoSQL?
+- There is no fixed schema → we can add/remove fields anytime.
+- `skills` is an array → SQL cannot store this directly without extra tables.
+- Fast read/write because it stores everything in a single document.
+
+### Query Example (MongoDB)
+To find all users with Python skill:
+
 
 ## Intermediate 1  
 Apply NoSQL Basics on a real dataset and explain results.
