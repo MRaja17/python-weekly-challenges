@@ -136,7 +136,64 @@ products.insert_many(sample_data, ordered=False)
 
 
 
-## Hard 2  
+## Hard 2
+### Mini Project: NoSQL Product Inventory System (End-to-End)
+
+This mini project demonstrates a complete NoSQL workflow using MongoDB to build a simple **Product Inventory System**.
+The system allows adding products, searching products, updating availability, and deleting discontinued items.
+
+---
+
+## 1️⃣ Project Overview
+
+Traditional SQL systems need strict schemas and multiple tables.
+This NoSQL system uses flexible JSON-like documents that allow rapid changes and schema-free storage.
+
+We will manage a store's inventory with these fields:
+
+- name  
+- brand  
+- price  
+- in_stock  
+- category  
+- colors (array)
+
+---
+
+## 2️⃣ Insert Products
+
+```python
+db = client["inventoryDB"]
+products = db["products"]
+
+items = [
+    {"name": "iPhone 14", "brand": "Apple", "price": 799, "in_stock": True, "colors": ["black", "blue"], "category": "electronics"},
+    {"name": "MacBook Air", "brand": "Apple", "price": 1099, "in_stock": False, "colors": ["silver"], "category": "electronics"},
+    {"name": "Nike Air Max", "brand": "Nike", "price": 129, "in_stock": True, "colors": ["white", "black"], "category": "footwear"},
+    {"name": "Samsung TV", "brand": "Samsung", "price": 499, "in_stock": True, "colors": ["black"], "category": "electronics"}
+]
+
+products.insert_many(items)
+for p in products.find({"in_stock": True}):
+    print(p)
+for p in products.find({"brand": "Apple"}):
+    print(p)
+for p in products.find({"price": {"$lt": 500}}):
+    print(p)
+products.update_one(
+    {"name": "MacBook Air"},
+    {"$set": {"in_stock": True}}
+)
+products.delete_one({"name": "Samsung TV"})
+products.create_index("brand")
+products.create_index([("price", 1), ("category", 1)])
+
+
+
+
+
+
+
 ### Mini Project: NoSQL Product Inventory System (End-to-End)
 
 This mini project demonstrates a complete NoSQL workflow using MongoDB to build a simple **Product Inventory System**.  
