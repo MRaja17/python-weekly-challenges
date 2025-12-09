@@ -113,7 +113,28 @@ products.delete_one({"name": "Pixel 8"})
 
 
 ## Hard 1  
-Optimize the NoSQL implementation for performance.
+### Optimizing NoSQL Implementation for Performance
+
+To improve the performance of our NoSQL database (MongoDB), we apply key optimization techniques. These optimizations help speed up queries, reduce load, and make the database scalable for large datasets.
+
+---
+
+## 1️⃣ Create Indexes for Fast Querying
+
+Indexes allow the database to look up results much faster.
+
+### Example: Create an index on the "price" field
+```python
+products.create_index("price")
+products.create_index("colors")
+products.find(
+    {"in_stock": True},
+    {"name": 1, "price": 1, "_id": 0}
+)
+products.insert_many(sample_data, ordered=False)
+
+
+
 
 ## Hard 2  
 Build a mini project applying NoSQL Basics end-to-end.
