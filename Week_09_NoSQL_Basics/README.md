@@ -39,7 +39,37 @@ To find all users with Python skill:
 
 
 ## Intermediate 1  
-Apply NoSQL Basics on a real dataset and explain results.
+### Using a Real Dataset with NoSQL (MongoDB Example)
+
+For this task, let's assume we have a small dataset of products stored in a NoSQL database (MongoDB).  
+Each product is stored as a JSON-like document:
+
+### Sample Dataset (products collection)
+{
+  "name": "iPhone 14",
+  "brand": "Apple",
+  "price": 799,
+  "in_stock": true,
+  "colors": ["black", "blue", "purple"]
+}
+{
+  "name": "Galaxy S23",
+  "brand": "Samsung",
+  "price": 699,
+  "in_stock": false,
+  "colors": ["green", "cream"]
+}
+{
+  "name": "Pixel 8",
+  "brand": "Google",
+  "price": 599,
+  "in_stock": true,
+  "colors": ["black"]
+}
+
+### **Queries Applied**
+
+#### 1️⃣ Find all products in stock
 
 ## Intermediate 2  
 Implement NoSQL Basics using an appropriate library.
