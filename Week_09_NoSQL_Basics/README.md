@@ -72,7 +72,45 @@ Each product is stored as a JSON-like document:
 #### 1️⃣ Find all products in stock
 
 ## Intermediate 2  
-Implement NoSQL Basics using an appropriate library.
+### Implementing NoSQL Basics Using Python + PyMongo
+
+For this implementation, we use **MongoDB** (a popular NoSQL database) and the Python library **PyMongo** to insert, query, and update NoSQL documents.
+
+### 1️⃣ Install PyMongo
+```bash
+pip install pymongo
+from pymongo import MongoClient
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["storeDB"]
+products = db["products"]
+sample_data = [
+    {"name": "iPhone 14", "brand": "Apple", "price": 799, "in_stock": True, "colors": ["black", "blue", "purple"]},
+    {"name": "Galaxy S23", "brand": "Samsung", "price": 699, "in_stock": False, "colors": ["green", "cream"]},
+    {"name": "Pixel 8", "brand": "Google", "price": 599, "in_stock": True, "colors": ["black"]}
+]
+
+products.insert_many(sample_data)
+in_stock_items = products.find({"in_stock": True})
+for item in in_stock_items:
+    print(item)
+cheap_items = products.find({"price": {"$lt": 700}})
+for item in cheap_items:
+    print(item)
+black_items = products.find({"colors": "black"})
+for item in black_items:
+    print(item)
+products.update_one(
+    {"name": "Galaxy S23"},
+    {"$set": {"in_stock": True}}
+)
+products.delete_one({"name": "Pixel 8"})
+
+
+
+
+
+
 
 ## Hard 1  
 Optimize the NoSQL implementation for performance.
